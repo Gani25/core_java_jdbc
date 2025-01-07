@@ -9,4 +9,7 @@ public interface StudentDao {
 	
 	List<Student> getAllStudents() throws SQLException;
 
+	int saveStudent(Student student) throws Exception;
+	
+	Student getStudentByRollNo(int rollNo) throws Exception;
 }
