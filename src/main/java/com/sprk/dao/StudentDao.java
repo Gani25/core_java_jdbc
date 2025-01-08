@@ -12,4 +12,6 @@ public interface StudentDao {
 	int saveStudent(Student student) throws Exception;
 	
 	Student getStudentByRollNo(int rollNo) throws Exception;
+
+	int deleteStudentByRollNo(int rollNo) throws Exception;
 }
