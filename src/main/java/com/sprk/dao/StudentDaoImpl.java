@@ -87,8 +87,26 @@ public class StudentDaoImpl implements StudentDao {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, rollNo);
 		int result = ps.executeUpdate();
-		
+
 		return result;
+	}
+
+	@Override
+	public int updateStudent(Student student) throws Exception {
+		String sql = "update student set first_name = ?, last_name = ?, email = ?, gender = ? where roll_no = ?";
+
+		PreparedStatement ps = conn.prepareStatement(sql);
+//		System.out.println(student.getFirstName());
+		ps.setString(1, student.getFirstName());
+		ps.setString(2, student.getLastName());
+		ps.setString(3, student.getEmail());
+		ps.setString(4, student.getGender());
+		ps.setInt(5, student.getRollNo());
+
+		int result = ps.executeUpdate();
+		closeAll(ps, null, conn);
+		return result;
+
 	}
 
 	private void closeAll(PreparedStatement ps, ResultSet rs, Connection conn) throws SQLException {
